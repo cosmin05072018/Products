@@ -9,13 +9,13 @@ if (isset($_POST['submit'])) {
     if (!$name) {
         $errors['message'] = 'Input required';
     }
-    if (!$description) {
+    elseif (!$description) {
         $errors['message'] = 'Input required';
     }
-    if (!$price) {
+    elseif (!$price) {
         $errors['message'] = 'Input required';
     }
-    if(!is_numeric($price)){
+    elseif(!is_numeric($price)){
         $errors['message'] = 'Please enter a price';
     }else{
         $db->query("INSERT INTO products SET

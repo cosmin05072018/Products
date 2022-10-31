@@ -1,2 +1,1 @@
-<?php
-$db = new mysqli('localhost', 'root', '', 'myprojects');
+<?php $db = new mysqli('localhost', 'root', '', 'myprojects');

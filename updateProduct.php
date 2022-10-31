@@ -1,5 +1,6 @@
 <?php
-
+require_once("connect.php");
+$errors=[];
 if (isset($_POST['submit'])) {
     $name = $_POST['productName'];
     $description = $_POST['productDescription'];
@@ -7,13 +8,10 @@ if (isset($_POST['submit'])) {
     if (!$name) {
         $errors['message'] = 'Input required';
     }
-    if (!$description) {
+    elseif (!$description) {
         $errors['message'] = 'Input required';
     }
-    if (!$price) {
-        $errors['message'] = 'Input required';
-    }
-    if (!is_numeric($price)) {
+    elseif (!$price || !is_numeric($price)) {
         $errors['message'] = 'Please enter a price';
     } else {
         $db->query("UPDATE products SET

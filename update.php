@@ -1,8 +1,5 @@
 <?php
-require_once("connect.php");
 require_once("updateProduct.php");
-
-
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +15,9 @@ require_once("updateProduct.php");
 
 <body>
     <div class="content">
+        <?php if(isset($errors['message'])): ?>
+            <div class="errors"><p><?= $errors['message']?></p></div>
+            <?php endif; ?>
         <form action="" method="POST">
             <label for="productName">Enter product name</label>
             <input type="text" placeholder="Enter product name" name="productName">

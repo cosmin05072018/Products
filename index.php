@@ -18,8 +18,8 @@ if(isset($_GET['id'])){
 </head>
 
 <body>
-    <?php require_once("navbar.php"); ?>
-    <?php $query = $db->query("SELECT * FROM products");
+    <?php require_once("navbar.php");
+    $query = $db->query("SELECT * FROM products");
     if ($query->num_rows) : ?>
         <div class="table">
             <table class="table">
@@ -40,7 +40,7 @@ if(isset($_GET['id'])){
                         <th scope="row"><?php echo $row['id']; ?></th>
                         <td><?php echo $row['nameProduct']; ?></td>
                         <td><?php echo $row['description']; ?></td>
-                        <td><?php echo $row['price']; ?></td>
+                        <td><?php echo $row['price']; ?> <i class="uil uil-dollar-alt"></i></td>
                         <td><a href=<?php echo 'update.php?id='.$row['id']; ?>><i class="uil uil-atom"></i></a></td>
                         <td><a href=<?php echo 'index.php?id='.$row['id']; ?>><i class="uil uil-trash-alt"></i></a><td>
                     </tr>
