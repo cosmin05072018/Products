@@ -3,7 +3,6 @@ if(isset($_GET['id'])){
     $db->query("DELETE FROM products WHERE id = $_GET[id]");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +19,6 @@ if(isset($_GET['id'])){
 
 <body>
     <?php require_once("navbar.php"); ?>
-
-
-
     <?php $query = $db->query("SELECT * FROM products");
     if ($query->num_rows) : ?>
         <div class="table">
@@ -45,7 +41,7 @@ if(isset($_GET['id'])){
                         <td><?php echo $row['nameProduct']; ?></td>
                         <td><?php echo $row['description']; ?></td>
                         <td><?php echo $row['price']; ?></td>
-                        <td><i class="uil uil-atom"></i></td>
+                        <td><a href=<?php echo 'update.php?id='.$row['id']; ?>><i class="uil uil-atom"></i></a></td>
                         <td><a href=<?php echo 'index.php?id='.$row['id']; ?>><i class="uil uil-trash-alt"></i></a><td>
                     </tr>
                 <?php }; ?>
