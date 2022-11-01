@@ -1,6 +1,9 @@
 <?php
 require_once("connect.php");
 $errors = [];
+function oldInput($key) {
+    return isset($_POST[$key]) ? $_POST[$key] : '';
+  }
 if (isset($_POST['submit'])) {
     $name = $_POST['productName'] ?? null;
     $description = $_POST['productDescription'] ?? null;
