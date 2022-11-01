@@ -1,5 +1,7 @@
 <?php
 require_once("updateProduct.php");
+$query = $db->query("SELECT * FROM products WHERE id = " . (int)$_GET['id']);
+$row = $query->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +21,13 @@ require_once("updateProduct.php");
             <?php endif; ?>
         <form action="" method="POST">
             <label for="productName">Enter product name</label>
-            <input type="text" placeholder="Enter product name" name="productName" value="<?= oldInput('productName')?>">
+            <input type="text" placeholder="Enter product name" name="productName" value="<?= isset($_GET['id']) ? $row['nameProduct'] : ''; ?>">
 
             <label for="productName">Enter product desctiption</label>
-            <input type="text" placeholder="Enter product description" name="productDescription" value="<?= oldInput('productDescription')?>">
+            <input type="text" placeholder="Enter product description" name="productDescription" value="<?= isset($_GET['id']) ? $row['description'] : ''; ?>">
 
             <label for="productName">Enter product price</label>
-            <input type="text" placeholder="Enter product price" name="productPrice" value="<?= oldInput('productPrice')?>">
+            <input type="text" placeholder="Enter product price" name="productPrice" value="<?= isset($_GET['id']) ? $row['price'] : ''; ?>">
 
             <input type="submit" value="Submit" name="submit">
         </form>

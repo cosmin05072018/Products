@@ -1,9 +1,7 @@
 <?php
 require_once("connect.php");
 $errors = [];
-function oldInput($key) {
-    return isset($_POST[$key]) ? $_POST[$key] : '';
-  }
+
 if (!isset($_GET['id']) && !$_GET['id']) {
     header("Location: index.php");
 }
@@ -12,7 +10,11 @@ if (isset($_GET['id']) && $_GET['id']) {
     if (!$query->num_rows) {
         header("Location: index.php?id=notFound");
     }
+    elseif(!is_numeric($_GET['id'])){
+        header("Location: index.php?id=notFound");
+    }
     if (isset($_POST['submit'])) {
+        
         $name = $_POST['productName'];
         $description = $_POST['productDescription'];
         $price = $_POST['productPrice'];
@@ -22,13 +24,13 @@ if (isset($_GET['id']) && $_GET['id']) {
             $errors['message'] = 'Input required';
         } elseif (!$price || !is_numeric($price)) {
             $errors['message'] = 'Please enter a price';
-        } else {
+        } elseif($query->num_rows) {
             $db->query("UPDATE products SET
                 nameProduct = '" . $db->real_escape_string($name) . "',
                 description = '" . $db->real_escape_string($description) . "',
                 price = '" . $db->real_escape_string($price) . "'
-                WHERE id = $_GET[id]
-            ");
+                WHERE id = '$_GET[id])'
+                ");
             header("Location: index.php");
         }
     }
