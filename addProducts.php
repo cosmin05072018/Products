@@ -1,7 +1,4 @@
-<?php
-require_once("processingProducts.php");
-
-?>
+<?php require_once("processingProducts.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">

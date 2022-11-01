@@ -1,7 +1,6 @@
 <?php
 require_once("updateProduct.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +19,13 @@ require_once("updateProduct.php");
             <?php endif; ?>
         <form action="" method="POST">
             <label for="productName">Enter product name</label>
-            <input type="text" placeholder="Enter product name" name="productName">
+            <input type="text" placeholder="Enter product name" name="productName" value="<?= oldInput('productName')?>">
 
             <label for="productName">Enter product desctiption</label>
-            <input type="text" placeholder="Enter product description" name="productDescription">
+            <input type="text" placeholder="Enter product description" name="productDescription" value="<?= oldInput('productDescription')?>">
 
             <label for="productName">Enter product price</label>
-            <input type="text" placeholder="Enter product price" name="productPrice">
+            <input type="text" placeholder="Enter product price" name="productPrice" value="<?= oldInput('productPrice')?>">
 
             <input type="submit" value="Submit" name="submit">
         </form>

@@ -1,8 +1,11 @@
 <?php
 require_once("connect.php");
 $query = $db->query("SELECT * FROM products");
+$calculatedPrice = $db->query("SELECT SUM(price) AS sum FROM products");
+while ($row = $calculatedPrice->fetch_assoc()) {
+    $totalSumPrice = 'Total price: ' . $row['sum'];
+};
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,12 +49,6 @@ $query = $db->query("SELECT * FROM products");
                 <?php }; ?>
             </table>
         </div>
-        <?php
-        $calculatedPrice = $db->query("SELECT SUM(price) AS sum FROM products");
-        while ($row = $calculatedPrice->fetch_assoc()) {
-            $totalSumPrice = 'Total price: ' . $row['sum'];
-        };
-        ?>
         <p class="total"><?php echo $totalSumPrice ?></p>
     <?php else : ?>
         <p class="empty">The product list is empty.</p>
