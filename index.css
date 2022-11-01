@@ -39,3 +39,10 @@ nav{
 .uil {
     cursor: pointer;
 }
+
+.total{
+    font-weight: 500;
+    margin-top: 20px;
+    margin-right: 600px;
+    float: right;
+}

@@ -2,9 +2,9 @@
 require_once("connect.php");
 $errors = [];
 if (isset($_POST['submit'])) {
-    $name = $_POST['productName'];
-    $description = $_POST['productDescription'];
-    $price = $_POST['productPrice'];
+    $name = $_POST['productName'] ?? null;
+    $description = $_POST['productDescription'] ?? null;
+    $price = $_POST['productPrice'] ?? null;
 
     if (!$name) {
         $errors['message'] = 'Input required';
